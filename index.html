@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="author" content="Gary Johnson">
+    <meta name="description" content="Lunar Lander Game">
+    <title>Lunar Lander</title>
+    <link href="styles/main.css" rel="stylesheet" type="text/css">
+    
+    <script defer> 
+      let LunarLander = { 
+        game: {},
+        utilities: {},
+        states: {},
+        components: {}, 
+        rendering: {},
+        input: {}
+      };
+    </script>
+
+    <script src="scripts/main.js" defer></script>
+    
+    <script src="scripts/Utilities/CollisionUtils.js" defer></script>
+    <script src="scripts/Utilities/RandomUtils.js" defer></script>
+    <script src="scripts/Utilities/StorageUtils.js" defer></script>
+
+    <script src="scripts/Components/Lander.js" defer></script>
+    <script src="scripts/Components/Terrain.js" defer></script>
+    <script src="scripts/Components/Particle.js" defer></script>
+    <script src="scripts/Components/ParticleSystem.js" defer></script>
+
+    <script src="scripts/Rendering/core.js" defer></script>
+    <script src="scripts/Rendering/Lander.js" defer></script>
+    <script src="scripts/Rendering/Terrain.js" defer></script>
+    <script src="scripts/Rendering/ParticleSystem.js" defer></script>
+    <script src="scripts/Rendering/Status.js" defer></script>
+
+    <script src="scripts/Input/Keyboard.js" defer></script>
+    
+    <script src="scripts/Game/Scoring.js" defer></script>
+    <script src="scripts/Game/Model.js" defer></script>
+
+    <script src="scripts/GameState/MainMenu.js" defer></script>
+    <script src="scripts/GameState/GamePlay.js" defer></script>
+    <script src="scripts/GameState/Controls.js" defer></script>
+    <script src="scripts/GameState/Scores.js" defer></script>
+    <script src="scripts/GameState/Credits.js" defer></script>
+
+  </head>
+  <body onload="LunarLander.main.initialize();">
+    <div id="game">
+      <div id="MainMenu" class="state">
+        <h1>Lunar Lander</h1>
+        <ul class="menu">
+          <li><button id="newGameButton">New Game</button></li>
+          <li><button id="controlsButton">Controls</button></li>
+          <li><button id="scoresButton">High Scores</button></li>
+          <li><button id="creditsButton">Credits</button></li>
+        </ul>
+      </div>
+      <div id="GamePlay" class="state">
+        <canvas id="gameCanvas"></canvas>
+        <div id="pause" class="overlay-menu">
+          <h1>Pause</h1>
+          <ul class="menu">
+            <li><button id="continueButton">Continue</button></li>
+            <li><button class="quit-button">Quit</button></li>
+          </ul>
+        </div>
+        <div id="gameOver" class="overlay-menu">
+          <h1>Game Over</h1>
+          <ul class="menu">
+            <li><button id="retryButton">Try Again</button></li>
+            <li><button class="quit-button">Quit</button></li>
+          </ul>
+        </div>
+      </div>
+      <div id="Controls" class="state">
+        <h1>Controls</h1>
+        <ul id="controlsList" class="menu">
+          <li class="control">
+            <button id="thrustControl">Thrust: </button>
+            <p id="thrustKey"></p>
+          </li>
+          <li class="control">
+            <button id="rotateRightControl">Rotate Right: </button>
+            <p id= "rotateRightKey"></p>
+          </li>
+          <li class="control">
+            <button id="rotateLeftControl">Rotate Left: </button>
+            <p id="rotateLeftKey"></p>
+          </li>
+          <li class="control">
+            <button id="pauseControl">Pause: </button>
+            <p id="pauseKey">ESC</p>
+          </li>
+        </ul>
+        <p id="instruction"></p>
+        <div class="back"><button id="controlsBack">Back</button></div>
+      </div>
+      <div id="Scores" class="state">
+        <h1>High Scores</h1>
+        <ol id="scoresList"></ol>
+        <div class="back"><button id="scoresBack">Back</button></div>
+      </div>
+      <div id="Credits" class="state">
+        <h1>Credits</h1>
+        <p>Developed by Gary Johnson for CS 5410</p>
+        <div class="back"><button id="creditsBack">Back</button></div>
+      </div>
+    </div>
+  </body>
+</html>
